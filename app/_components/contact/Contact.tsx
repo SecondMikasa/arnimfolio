@@ -23,7 +23,7 @@ export default function Contact() {
   
   const contactEmail = "kumararnim1@vivaldi.net";
   const emailSubject = "Project Inquiry";
-  const emailBody = "Hi, I'd like to discuss a project with you.";
+  const emailBody = "Hi, I\'d like to discuss a project with you.";
   
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
