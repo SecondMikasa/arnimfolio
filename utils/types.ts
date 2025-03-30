@@ -10,5 +10,5 @@ export interface TimelineItemProps {
 export interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  pdfUrl: string;
+  pdfId: string;
 }
