@@ -28,7 +28,7 @@ const TimelineData: TimelineItemProps[] = [
     jobTitle: "Secondary Schooling",
     company: "St.Xaviers' School",
     jobType: undefined,
-    duration: "Mar 2008 - March 2020",
+    duration: "Mar 2009 - March 2020",
     stuffIDid: undefined
   },
 ];
