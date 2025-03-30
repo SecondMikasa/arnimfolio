@@ -6,6 +6,8 @@ import { initialBlobityOptions } from "@/utils/blobity.config"
 import useBlobity from "blobity/lib/react/useBlobity"
 import Works from "./_components/work/Works";
 import About from "./_components/about/About";
+import Contact from "./_components/contact/Contact";
+import Footer from "./_components/footer/Footer";
 
 export default function Home() {
   const blobity = useBlobity(initialBlobityOptions);
@@ -15,6 +17,8 @@ export default function Home() {
       <Hero />
       <Works />
       <About />
+      <Contact />
+      <Footer />
     </main>
   );
 }

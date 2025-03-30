@@ -84,7 +84,6 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 gap-4">
-          {/* Skills sections unchanged */}
           <div>
             <AnimatedTitle
               wordSpace={"mr-[0.5ch]"}

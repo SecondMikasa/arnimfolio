@@ -123,7 +123,7 @@ export const Hero = ()  => {
           animate={animateIn1}
         >
           <Image
-            src="/transparent-ade-min.png"
+            src="/arnim.png"
             priority
             fill
             alt="Arnim's picture"
