@@ -130,7 +130,7 @@ export default function Contact() {
               <div className="flex flex-col items-center justify-center h-full w-full py-6">
                 <div className={`${syne.className} text-center mb-6`}>
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3">
-                    LET'S CONNECT
+                    LET&apos;S CONNECT
                   </h3>
                   <p className="opacity-80 mb-6">
                     Click the button below to send me an email directly
