@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Syne } from "next/font/google";
@@ -9,10 +9,13 @@ import { useInView } from "react-intersection-observer";
 import AnimatedBody from "../ui/AnimatedBody";
 import AnimatedTitle from "../ui/AnimatedTitle";
 
+import { ResumeModal } from "./ResumeModal";
+
 const syne = Syne({ subsets: ["latin"] });
 
 export default function About() {
   const { setSectionInView } = useView();
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -44,14 +47,12 @@ export default function About() {
           <AnimatedBody className="inline leading-[34px] md:leading-[39px]">
             Each webapp is unique so I ensure that I learn and grow through each one ensuring that I not only put in my best but also deliver what people could use with ease. Wanna learn more? Here&apos;s
             <br className="hidden md:block" />
-            <Link
-              className="underline"
-              href={
-                "https://drive.google.com/file/d/1Rd-IB_5pxsGj4RDtHjEggPB392ND29xB/view?usp=sharing"
-              }
+            <button
+              className="underline focus:outline-none"
+              onClick={() => setIsResumeModalOpen(true)}
             >
               my résumè
-            </Link>
+            </button>
             .
           </AnimatedBody>
         </div>
@@ -119,6 +120,13 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* PDF Resume Modal */}
+      <ResumeModal 
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+        pdfUrl="https://drive.google.com/file/d/1ZNFfEkTnaczScr6SHsdgcSEZ_hSDaCJD/view?usp=sharing"
+      />
     </section>
   );
 }

@@ -44,7 +44,7 @@ export default function Works() {
         },
         {
             title: "ReadMePro",
-            gitLink: "https://github.com/SecondMikasa/VideoShrinkPro",
+            gitLink: "https://github.com/SecondMikasa/ReadMePro",
             liveLink: "",
             about:
                 "Developed a dynamic README editor that simplifies designing, managing, and maintaining README files on the go, boosting productivity for developers.Engineered an intuitive interface streamlining documentation workflows.",
