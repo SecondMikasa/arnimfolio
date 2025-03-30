@@ -1,10 +1,10 @@
-"use client";
-import { Syne } from "next/font/google"
-import { Title } from "../ui/Title"
-import { TimelineItem } from "./TimelineIem"
-import { TimelineItemProps } from "@/utils/types";
+"use client"
 
-const syne = Syne({ subsets: ["latin"] });
+import { Title } from "../ui/Title"
+
+import { TimelineItem } from "./TimelineIem"
+
+import { TimelineItemProps } from "@/utils/types";
 
 const TimelineData: TimelineItemProps[] = [
   {

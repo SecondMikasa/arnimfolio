@@ -1,17 +1,11 @@
 "use client";
 import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
-// @ts-ignore
+
 import "intersection-observer";
 import { useInView } from "react-intersection-observer";
 
-type AnimatedTitleProps = {
-  children: string;
-  className: string;
-  wordSpace: string;
-  charSpace: string;
-  delay?: number;
-};
+import { AnimatedTitleProps } from "@/utils/types";
 
 export default function AnimatedTitle({
   children,

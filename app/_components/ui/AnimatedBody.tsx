@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
-// @ts-ignore
+
 import "intersection-observer";
 import { useInView } from "react-intersection-observer";
 
@@ -15,8 +15,6 @@ type AnimatedBodyProps = {
 export default function AnimatedBody({
   children,
   className,
-  wordSpace,
-  charSpace,
 }: AnimatedBodyProps) {
   const ctrls = useAnimation();
 
@@ -33,11 +31,6 @@ export default function AnimatedBody({
       ctrls.start("hidden");
     }
   }, [ctrls, inView]);
-
-  const wordAnimation = {
-    hidden: {},
-    visible: {},
-  };
 
   const bodyAnimation = {
     hidden: {

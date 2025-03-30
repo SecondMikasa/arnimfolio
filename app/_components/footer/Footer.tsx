@@ -1,7 +1,7 @@
 import React from "react";
 
 // import Link from "next/link";
-import { Link, Element } from 'react-scroll';
+import { Link } from 'react-scroll';
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 

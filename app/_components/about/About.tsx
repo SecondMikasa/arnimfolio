@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 
 import { Syne } from "next/font/google";
 
@@ -31,7 +30,7 @@ export default function About() {
 
   // Close modal when Escape key is pressed
   useEffect(() => {
-    const handleKeyDown = (event: any) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isResumeModalOpen) {
         setIsResumeModalOpen(false);
       }

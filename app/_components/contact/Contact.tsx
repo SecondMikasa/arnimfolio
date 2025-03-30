@@ -1,13 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { Syne } from "next/font/google";
+
 import { useView } from "@/contexts/viewContext";
 
 import "intersection-observer";
 import { useInView } from "react-intersection-observer";
-import { AnimatePresence, motion } from "framer-motion";
+
 import AnimatedTitle from "../ui/AnimatedTitle";
-import Link from "next/link";
+
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 const syne = Syne({ subsets: ["latin"] });
