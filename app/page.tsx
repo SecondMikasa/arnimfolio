@@ -13,15 +13,12 @@ import { useEffect } from "react";
 // import Blobity from "blobity";
 
 export default function Home() {
-  // Note: Silences the TypeScript/ESLint warning about the variable being declared but not used and prevents build tools from failing due to linting errors
-  // eslint-disable-next-line no-unused-vars
-  // const blobity = useBlobity(initialBlobityOptions)
 
   const blobityInstance = useBlobity(initialBlobityOptions);
 
     useEffect(() => {
         if (blobityInstance.current) {
-            // @ts-ignore for debugging purposes or playing around
+            // @ts-expect-error for debugging purposes or playing around
             window.blobity = blobityInstance.current;
         }
     }, [blobityInstance]);
