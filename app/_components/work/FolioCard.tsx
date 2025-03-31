@@ -35,9 +35,8 @@ export default function FolioCard({
   return (
     <div
       ref={ref}
-      className={`w-full rounded-[20px] std-backdrop-blur bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] grid grid-cols-1 items-start lg:grid-cols-12 xl:flex gap-5 xl:gap-10 p-6 duration-700 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`w-full rounded-[20px] std-backdrop-blur bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] grid grid-cols-1 items-start lg:grid-cols-12 xl:flex gap-5 xl:gap-10 p-6 duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}
     >
       <Image
         src={img}
@@ -48,10 +47,12 @@ export default function FolioCard({
       />
       <div className="flex flex-col gap-4 lg:col-span-7">
         <div className="flex items-center justify-between">
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold">
-            {title}
-          </h2>
-          <div className="flex gap-3 md:gap-4 text-2xl sm:text-3xl xl:text-4xl">
+          <div className="max-w-[calc(100%-80px)]">
+            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">
+              {title}
+            </h2>
+          </div>
+          <div className="flex gap-2 md:gap-4 text-2xl sm:text-3xl xl:text-4xl">
             <Link
               href={liveLink}
               className="rounded-full bg-icon-radial p-3 hover:bg-red"
