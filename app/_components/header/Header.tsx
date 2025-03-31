@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <>
       <div className="fixed w-full max-w-[90%] md:max-w-[95%] lg:max-w-[1223px] z-10 select-none mx-auto">
-        <div className="flex justify-between items-center px-4 py-4 rounded-2xl bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] mt-4 sm:mt-8 backdrop-blur-lg">
+        <div className="flex justify-between items-center px-4 py-4 rounded-2xl bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] mt-4 md:mt-8 backdrop-blur-lg">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image
@@ -27,12 +27,12 @@ export default function Header() {
               width={300}
               height={300}
               alt="logo"
-              className="select-none w-16 h-auto"
+              className="select-none -ml-20 h-auto"
             />
           </div>
 
           {/* Navigation Links */}
-          <ul className="hidden sm:flex gap-6 lg:gap-8 text-white/25">
+          <ul className="hidden md:flex gap-6 lg:gap-8 text-white/25">
             <Link
               href="#home"
               className={`hover:text-white transition-colors duration-300 ${
@@ -59,7 +59,7 @@ export default function Header() {
             </Link>
             <Link
               href="#contact"
-              className={`hover:text-white transition-colors duration-300 ${
+              className={`hover:text-white transition-colors duration-300  ${
                 sectionInView === "contact" && "text-white"
               }`}
             >
@@ -68,7 +68,7 @@ export default function Header() {
           </ul>
 
           {/* Social Icons */}
-          <div className="hidden sm:flex gap-5 text-xl text-white/25">
+          <div className="hidden md:flex gap-5 text-xl text-white/25">
             <Link
               target="_blank"
               href="https://github.com/SecondMikasa"
@@ -95,7 +95,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <Icon
             onClick={() => setMenuOpen(!menuOpen)}
-            className="cursor-pointer flex sm:hidden text-2xl text-white/25 hover:text-white transition-colors duration-300"
+            className="cursor-pointer flex md:hidden text-2xl text-white/25 hover:text-white transition-colors duration-300"
             icon={`${menuOpen ? "gg:close" : "lucide:menu"}`}
           />
         </div>
