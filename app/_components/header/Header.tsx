@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react"
+import { useState } from "react";
 
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion";
 
-import { Icon } from "@iconify/react/dist/iconify.js"
+import { Icon } from "@iconify/react/dist/iconify.js";
 
-import { useView } from "@/contexts/viewContext"
+import { useView } from "@/contexts/viewContext";
 
-import MobileMenu from "./MobileMenu"
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const { sectionInView } = useView();
@@ -18,58 +18,86 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed max-w-[90%] xl:max-w-[1223px] w-full z-10 select-none">
-        <div className="flex justify-between items-center pl-0 pr-6 py-4 rounded-2xl bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] mt-4 sm:mt-8 std-backdrop-blur">
-          <Image
-            src="/arnim-logo.svg"
-            width={300}
-            height={300}
-            alt="logo"
-            className="select-none -ml-20"
-          />
-          <Icon
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="cursor-pointer flex sm:hidden text-2xl"
-            icon={`${menuOpen ? "gg:close" : "lucide:menu"}`}
-          />
+      <div className="fixed w-full max-w-[90%] md:max-w-[95%] lg:max-w-[1223px] z-10 select-none mx-auto">
+        <div className="flex justify-between items-center px-4 py-4 rounded-2xl bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] mt-4 sm:mt-8 backdrop-blur-lg">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Image
+              src="/arnim-logo1.svg"
+              width={300}
+              height={300}
+              alt="logo"
+              className="select-none w-16 h-auto"
+            />
+          </div>
 
-          <ul className="hidden sm:flex gap-8 lg:gap-12 text-white/25">
+          {/* Navigation Links */}
+          <ul className="hidden sm:flex gap-6 lg:gap-8 text-white/25">
             <Link
               href="#home"
-              className={`${sectionInView === "home" && "text-white"} `}
+              className={`hover:text-white transition-colors duration-300 ${
+                sectionInView === "home" && "text-white"
+              }`}
             >
               Home
             </Link>
             <Link
               href="#work"
-              className={`${sectionInView === "work" && "text-white"} `}
+              className={`hover:text-white transition-colors duration-300 ${
+                sectionInView === "work" && "text-white"
+              }`}
             >
               Work
             </Link>
             <Link
               href="#about"
-              className={`${sectionInView === "about" && "text-white"} `}
+              className={`hover:text-white transition-colors duration-300 ${
+                sectionInView === "about" && "text-white"
+              }`}
             >
               About
             </Link>
             <Link
               href="#contact"
-              className={`${sectionInView === "contact" && "text-white"} `}
+              className={`hover:text-white transition-colors duration-300 ${
+                sectionInView === "contact" && "text-white"
+              }`}
             >
               Contact
             </Link>
           </ul>
-          <div className="gap-5 text-xl hidden sm:flex">
-            <Link target="_blank" href="https://github.com/SecondMikasa">
+
+          {/* Social Icons */}
+          <div className="hidden sm:flex gap-5 text-xl text-white/25">
+            <Link
+              target="_blank"
+              href="https://github.com/SecondMikasa"
+              className="hover:text-white transition-colors duration-300"
+            >
               <Icon icon="hugeicons:github" />
             </Link>
-            <Link target="_blank" href="https://www.linkedin.com/in/kumar-arnim-705088268">
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/kumar-arnim-705088268"
+              className="hover:text-white transition-colors duration-300"
+            >
               <Icon icon="hugeicons:linkedin-01" />
             </Link>
-            <Link target="_blank" href="https://twitter.com/KumarArnim1">
+            <Link
+              target="_blank"
+              href="https://twitter.com/KumarArnim1"
+              className="hover:text-white transition-colors duration-300"
+            >
               <Icon icon="akar-icons:x-fill" />
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <Icon
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="cursor-pointer flex sm:hidden text-2xl text-white/25 hover:text-white transition-colors duration-300"
+            icon={`${menuOpen ? "gg:close" : "lucide:menu"}`}
+          />
         </div>
       </div>
 
