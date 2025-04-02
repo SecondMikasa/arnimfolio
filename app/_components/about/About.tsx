@@ -75,6 +75,7 @@ export default function About() {
             <button
               className="underline text-white hover:text-white/80 transition-colors focus:outline-none"
               onClick={() => setIsResumeModalOpen(true)}
+              id="resume"
             >
               my résumè
             </button>

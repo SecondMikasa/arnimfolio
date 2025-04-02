@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -30,7 +30,7 @@ export default function Header() {
               className="select-none -ml-20 h-auto"
             />
           </div>
-
+          
           {/* Navigation Links */}
           <ul className="hidden md:flex gap-6 lg:gap-8 text-white/25">
             <Link
@@ -66,7 +66,7 @@ export default function Header() {
               Contact
             </Link>
           </ul>
-
+          
           {/* Social Icons */}
           <div className="hidden md:flex gap-5 text-xl text-white/25">
             <Link
@@ -91,16 +91,29 @@ export default function Header() {
               <Icon icon="akar-icons:x-fill" />
             </Link>
           </div>
-
-          {/* Mobile Menu Button */}
-          <Icon
+          
+          {/* Mobile Menu Button with Rotation Animation */}
+          <motion.div
+            className="cursor-pointer flex md:hidden text-2xl text-white/25 hover:text-white transition-colors duration-300 relative z-20"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="cursor-pointer flex md:hidden text-2xl text-white/25 hover:text-white transition-colors duration-300"
-            icon={`${menuOpen ? "gg:close" : "lucide:menu"}`}
-          />
+            animate={{ rotate: menuOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={menuOpen ? 'close' : 'menu'}
+                initial={{ opacity: 0, rotate: -180 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 180 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Icon icon={menuOpen ? "gg:close" : "lucide:menu"} />
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
-
+      
       <AnimatePresence>
         {menuOpen && <MobileMenu onMenuOpen={setMenuOpen} />}
       </AnimatePresence>
