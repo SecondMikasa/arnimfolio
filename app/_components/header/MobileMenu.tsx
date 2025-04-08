@@ -1,20 +1,19 @@
-import React, { useState, useEffect, SetStateAction } from "react";
+import React, { SetStateAction } from "react"
 
-import Link from "next/link";
+import Link from "next/link"
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
-import { useView } from "@/contexts/viewContext";
+import { useView } from "@/contexts/viewContext"
 
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { ResumeModal } from "../about/ResumeModal";
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 export default function MobileMenu({
   onMenuOpen,
 }: {
   onMenuOpen: React.Dispatch<SetStateAction<boolean>>;
 }) {
-  const { sectionInView } = useView();
+  const { sectionInView } = useView()
 
   return (
     <motion.div
