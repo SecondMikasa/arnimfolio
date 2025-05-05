@@ -15,70 +15,167 @@ export default function MobileMenu({
 }) {
   const { sectionInView } = useView()
 
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+      y: -10
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: 0.07,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: -10,
+      transition: {
+        duration: 0.2,
+        ease: "easeIn",
+        when: "afterChildren",
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      x: -15
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { ease: "easeOut" }
+    },
+    exit: {
+      opacity: 0,
+      x: -10,
+      transition: { ease: "easeIn" }
+    },
+  }
+
+  const socialItemVariants = {
+    hidden: {
+      opacity: 0,
+      x: 15
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { ease: 'easeOut' }
+    },
+    exit: {
+      opacity: 0,
+      x: 10,
+      transition: { ease: 'easeIn' }
+    }
+  }
+
+  const navItems = ["home", "work", "about", "contact"]
+
+  const socialItems = [
+    {
+      name: "GitHub",
+      icon: "hugeicons:github",
+      url: "https://github.com/secondmikasa",
+      size: "text-3xl"
+    },
+    {
+      name: "LinkedIn",
+      icon: "hugeicons:linkedin-01",
+      url: "https://www.linkedin.com/in/kumar-arnim-705088268",
+      size: "text-xl"
+    },
+    {
+      name: "Twitter",
+      icon: "akar-icons:x-fill",
+      url: "https://twitter.com/KumarArnim1",
+      size: "text-xl"
+    },
+  ]
+
+  const handleLinkClick = () => {
+    onMenuOpen(false)
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5, y: -20, transformOrigin: "top center" }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.5, y: -20 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="grid z-10 items-center grid-cols-2 md:hidden px-6 py-5 fixed left-0 right-0 mx-auto top-12 rounded-2xl bg-linear-to-r from-[#d9d9d94d] to-[#7373734d] backdrop-blur-sm max-w-[90%] w-full mt-12 md:mt-16"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="fixed md:hidden top-[75px] left-0 right-0 mx-auto max-w-[90%] w-full z-20 grid grid-cols-1 sm:grid-cols-2 items-start gap-8 px-6 py-8 rounded-2xl shadow-xl border border-[rgba(var(--border-color),0.4)] bg-gradient-to-br from-[rgba(var(--background-start-rgb),0.95)] to-[rgba(var(--background-end-rgb),0.95)] backdrop-blur-md"
     >
-      <ul
-        className="flex flex-col gap-4 lg:gap-12 text-white/25"
-        onClick={() => onMenuOpen(false)}
-      >
-        <Link
-          href="#home"
-          className={`${sectionInView === "home" && "text-white"} w-fit`}
+      {/* Navigation Section */}
+      <nav className="mb-6 sm:mb-0">
+        <ul className="flex flex-col gap-5"> 
+          {
+            navItems.map((item) => (
+            <motion.li key={item} variants={itemVariants}>
+              <Link
+                href={`#${item}`}
+                className={`text-lg font-medium capitalize text-[rgb(var(--muted-foreground-rgb))] hover:text-[rgb(var(--foreground-rgb))] transition-colors duration-200 flex items-center gap-2 w-fit group ${sectionInView === item ? "!text-[rgb(var(--foreground-rgb))]" : ""
+                  }`}
+                onClick={handleLinkClick} 
+              >
+                {/* Underline effect for active/hover */}
+                <motion.span
+                  className={`block h-0.5 bg-gradient-to-r from-[rgb(var(--primary-start))] to-[rgb(var(--primary-end))] transition-all duration-300 group-hover:w-5 ${sectionInView === item ? "w-5" : "w-0" 
+                    }`}
+                  layoutId="underline" 
+                />
+                <span> 
+                  {item}
+                </span>
+              </Link>
+            </motion.li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Social Links Section */}
+      <div className="flex flex-col gap-4 z-20">
+        <motion.p
+          variants={socialItemVariants} 
+          className="text-[rgb(var(--muted-foreground-rgb))] text-sm mb-1 sm:text-left"
         >
-          Home
-        </Link>
-        <Link
-          href="#work"
-          className={`${sectionInView === "work" && "text-white"} w-fit`}
-        >
-          Work
-        </Link>
-        <Link
-          href="#about"
-          className={`${sectionInView === "about" && "text-white"} w-fit`}
-        >
-          About
-        </Link>
-        <Link
-          href="#contact"
-          className={`${sectionInView === "contact" && "text-white"}  w-fit`}
-        >
-          Contact
-        </Link>
-      </ul>
-      <div className="flex flex-col gap-3 z-20 items-center justify-center">
-        <Link
-          className="p-4 flex-1 flex justify-center w-full rounded-xl h-fit text-4xl visited:bg-[#E3D3BE] bg-linear-to-r from-[#d9d9d915] to-[#7373731f] std-backdrop-blur"
-          target="_blank"
-          href="https://github.com/secondmikasa"
-          data-blobity-radius="10"
-        >
-          <Icon icon="hugeicons:github" />
-        </Link>
-        <div className="flex gap-3 w-full">
-          <Link
-            className="p-4 flex justify-center w-full rounded-xl h-fit text-2xl bg-linear-to-r from-[#d9d9d915] to-[#7373731f] std-backdrop-blur"
-            target="_blank"
-            href="https://www.linkedin.com/in/kumar-arnim-705088268"
-            data-blobity-radius="10"
+          Connect with me:
+        </motion.p>
+
+        {socialItems.map((social, index) => (
+          <motion.div
+            key={social.name}
+            variants={socialItemVariants}
+            className="w-full"
           >
-            <Icon icon="hugeicons:linkedin-01" />
-          </Link>
-          <Link
-            className="p-4 flex justify-center w-full rounded-xl h-fit text-2xl bg-linear-to-r from-[#d9d9d915] to-[#7373731f] std-backdrop-blur"
-            target="_blank"
-            href="https://twitter.com/KumarArnim1"
-            data-blobity-radius="10"
-          >
-            <Icon icon="akar-icons:x-fill" />
-          </Link>
-        </div>
+            <Link
+              className={`flex items-center justify-center gap-3 w-full p-3 rounded-lg h-fit text-[rgb(var(--foreground-rgb))] bg-[rgba(var(--card-bg-start),0.6)] hover:bg-[rgba(var(--card-bg-start),0.9)] // Button background border border-[rgb(var(--border-color))] transition-all duration-300 group/social`}
+              target="_blank"
+              rel="noopener noreferrer"
+              href={social.url}
+              data-blobity-radius="10"
+              onClick={handleLinkClick}
+              aria-label={`Visit my ${social.name} profile`}
+            >
+              <Icon
+                icon={social.icon}
+                className={`${social.size} text-[rgb(var(--muted-foreground-rgb))] group-hover/social:text-[rgb(var(--foreground-rgb))] transition-colors duration-200`}
+              />
+              <span className="text-sm font-medium">
+                {social.name}
+              </span>
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </motion.div>
   );
