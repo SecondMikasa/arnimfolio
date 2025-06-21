@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Syne } from "next/font/google";
@@ -17,7 +18,6 @@ const syne = Syne({ subsets: ["latin"] });
 
 export default function Contact() {
   const { setSectionInView } = useView();
-  const [viewCount, setViewCount] = useState<number>(0);
   const [emailDisplay, setEmailDisplay] = useState<boolean>(false);
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
 
@@ -61,12 +61,6 @@ export default function Contact() {
 
   useEffect(() => {
     if (inView) setSectionInView("contact");
-  }, [inView, setSectionInView]);
-
-  useEffect(() => {
-    if (inView) {
-      setViewCount((c) => c + 1);
-    }
   }, [inView, setSectionInView]);
 
   const handleContactClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -127,7 +121,7 @@ export default function Contact() {
                   charSpace="mr-[0.001em]"
                   className="text-2xl sm:text-3xl md:text-[42px] lg:text-[52px] font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight pb-2"
                 >
-                  LET'S CREATE SOMETHING
+                  LET&apos;S CREATE SOMETHING
                 </AnimatedTitle>
                 <AnimatedTitle
                   wordSpace="mr-2 md:mr-[12px]"
@@ -142,8 +136,8 @@ export default function Contact() {
                 variants={itemVariants}
                 className="text-gray-300 text-base md:text-lg mt-6 mb-2 max-w-2xl mx-auto leading-relaxed"
               >
-                Ready to bring your vision to life? I'm passionate about crafting exceptional digital experiences
-                that make a lasting impact. Let's collaborate and turn your ideas into reality.
+                Ready to bring your vision to life? I&apos;m passionate about crafting exceptional digital experiences
+                that make a lasting impact. Let&apos;s collaborate and turn your ideas into reality.
               </motion.p>
             </div>
 
@@ -197,7 +191,7 @@ export default function Contact() {
                   <p className="text-gray-400 text-sm mb-4">Connect with me</p>
                   <div className="flex space-x-4">
                     {
-                      socialLinks.map((social, index) => (
+                      socialLinks.map((social) => (
                         <motion.a
                           key={social.name}
                           href={social.url}
@@ -245,7 +239,7 @@ export default function Contact() {
 
                   {/* Button content */}
                   <div className="relative flex items-center space-x-3">
-                    <span>LET'S TALK</span>
+                    <span>LET&apos;S TALK</span>
                     <motion.div
                       animate={{ x: [0, 5, 0] }}
                       transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -304,10 +298,10 @@ export default function Contact() {
                   className={`${syne.className} text-center mb-8`}
                 >
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    LET'S CONNECT
+                    LET&apos;S CONNECT
                   </h3>
                   <p className="text-gray-300 text-lg mb-2 max-w-md">
-                    Ready to discuss your project? I'm excited to hear your ideas!
+                    Ready to discuss your project? I&apos;m excited to hear your ideas!
                   </p>
                   <p className="text-gray-400 text-sm">
                     Click the button below to send me an email directly

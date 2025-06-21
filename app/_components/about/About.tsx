@@ -1,9 +1,14 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+
 import { Syne } from "next/font/google";
+
 import { useView } from "@/contexts/viewContext";
+
 import { useInView } from "react-intersection-observer";
+
 import AnimatedBody from "../ui/AnimatedBody";
 import AnimatedTitle from "../ui/AnimatedTitle";
+
 import { ResumeModal } from "./ResumeModal";
 
 const syne = Syne({ 
@@ -31,7 +36,7 @@ const SKILLS_DATA = [
   },
   {
     title: "Other Tools",
-    skills: "GreenSock, Zustand, Vercel, Socket.io"
+    skills: "GreenSock, Zustand, Vercel, Socket.io, Prisma"
   }
 ] as const;
 
@@ -82,8 +87,6 @@ export default function About() {
       document.body.style.overflow = 'auto';
     };
   }, [isResumeModalOpen, handleCloseResumeModal]);
-
-  // This is now integrated directly into the JSX for better styling control
 
   return (
     <section 
@@ -141,7 +144,7 @@ export default function About() {
                 </AnimatedBody>
                 
                 <AnimatedBody className="text-white/85 text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed font-light">
-                  Each project is a unique canvas where I ensure continuous learning and growth. I don't just code - I craft experiences that people can use with <span className="text-purple-400 font-semibold">ease and delight</span>.
+                  Each project is a unique canvas where I ensure continuous learning and growth. I don&apos;t just code - I craft experiences that people can use with <span className="text-purple-400 font-semibold">ease and delight</span>.
                 </AnimatedBody>
 
                 {/* CTA Section */}

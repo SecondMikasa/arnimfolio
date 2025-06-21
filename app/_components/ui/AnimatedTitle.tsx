@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useCallback, memo, useMemo } from "react";
+
 import { useAnimation, motion, Variants } from "framer-motion";
+
 import { useInView } from "react-intersection-observer";
 
 // Type definitions
@@ -19,21 +21,6 @@ interface AnimatedTitleProps {
 const wordAnimation: Variants = {
   hidden: {},
   visible: {},
-};
-
-const characterAnimation: Variants = {
-  hidden: {
-    opacity: 0,
-    y: "0.25em",
-  },
-  visible: {
-    opacity: 1,
-    y: "0em",
-    transition: {
-      duration: 1,
-      ease: [0.2, 0.65, 0.3, 0.9],
-    },
-  },
 };
 
 const AnimatedTitle = memo<AnimatedTitleProps>(({

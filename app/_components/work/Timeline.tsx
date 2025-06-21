@@ -1,6 +1,5 @@
 "use client"
 import AnimatedTitle from "../ui/AnimatedTitle";
-import { Title } from "../ui/Title"
 
 import { TimelineItem } from "./TimelineItem"
 
