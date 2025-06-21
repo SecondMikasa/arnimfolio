@@ -1,15 +1,9 @@
-"use client";
-import React from "react"
-
-import Link from "next/link"
-import Image from "next/image"
-
-import "intersection-observer"
-import { useInView } from "react-intersection-observer"
-
-import { Icon } from "@iconify/react/dist/iconify.js"
-
-import Tag from "./Tag"
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useInView } from "react-intersection-observer";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import Tag from "./Tag";
 
 export default function FolioCard({
   title,
@@ -32,42 +26,56 @@ export default function FolioCard({
     triggerOnce: true,
   });
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       ref={ref}
-      className={`w-full rounded-[20px] std-backdrop-blur bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] grid grid-cols-1 items-start lg:grid-cols-12 xl:flex gap-5 xl:gap-10 p-6 duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+      className={`glass-card w-full rounded-2xl grid grid-cols-1 items-start lg:grid-cols-12 xl:flex gap-5 xl:gap-10 p-6 transition-all duration-700 transform hover:shadow-lg hover:shadow-blue-500/10 ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <Image
-        src={img}
-        width={420}
-        height={700}
-        alt="work"
-        className="rounded-[10px] w-full lg:col-span-5"
-      />
-      <div className="flex flex-col gap-4 lg:col-span-7">
+      <div className="relative overflow-hidden rounded-xl lg:col-span-5 group w-full">
+        <Image
+          src={img}
+          width={420}
+          height={700}
+          alt={`${title} project screenshot`}
+          className="rounded-xl w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-radial opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </div>
+      
+      <div className="flex flex-col gap-5 lg:col-span-7">
         <div className="flex items-center justify-between">
-          <div className="max-w-[calc(100%-80px)]">
-            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">
+          <div className="max-w-[calc(100%-100px)]">
+            <h2 className="text-gradient-blue text-2xl sm:text-3xl xl:text-4xl font-bold">
               {title}
             </h2>
           </div>
-          <div className="flex gap-2 md:gap-4 text-2xl sm:text-3xl xl:text-4xl">
+          
+          <div className="flex gap-3 md:gap-4">
             <Link
               href={liveLink}
-              className="rounded-full bg-icon-radial p-3 hover:bg-red"
+              className="rounded-full bg-gradient-to-br from-blue-600/20 to-blue-500/10 p-3 transition-all duration-300 hover:scale-110 hover:shadow-md hover:shadow-blue-500/25"
               target="_blank"
-              aria-label="View Github Repo"
+              aria-label="View Live Site"
               data-blobity-radius="34"
               data-blobity-magnetic="true"
             >
-              <Icon icon="line-md:external-link-rounded" />
+              <Icon 
+                icon="line-md:external-link-rounded" 
+                className="text-2xl sm:text-3xl text-blue-400 hover:text-blue-300 transition-colors"
+              />
             </Link>
+            
             <Link
               href={`${gitLink ? gitLink : "#"}`}
-              className="rounded-full bg-icon-radial p-3"
+              className={`rounded-full bg-gradient-to-br from-purple-600/20 to-purple-500/10 p-3 transition-all duration-300 ${gitLink ? "hover:scale-110 hover:shadow-md hover:shadow-purple-500/25" : "cursor-not-allowed opacity-60"}`}
               target="_blank"
-              aria-label="View Live Demo"
+              aria-label="View GitHub Repository"
               data-blobity-radius="34"
               data-blobity-magnetic="true"
               {...(!gitLink && {
@@ -76,15 +84,21 @@ export default function FolioCard({
             >
               <Icon
                 icon="mingcute:github-line"
-                className={`${!gitLink && "opacity-30"}`}
+                className={`text-2xl sm:text-3xl ${gitLink ? "text-purple-400 hover:text-purple-300" : "text-gray-400"} transition-colors`}
               />
             </Link>
           </div>
         </div>
-        <p className="text-base text-white/70">{about}</p>
-        <div className="flex gap-3 md:gap-4 flex-wrap">
+        
+        <p className="text-base text-[rgb(var(--foreground-secondary))] leading-relaxed">
+          {about}
+        </p>
+        
+        <div className="flex gap-3 md:gap-4 flex-wrap mt-auto">
           {stack.map((tech, index) => (
-            <Tag key={index}>{tech}</Tag>
+            <Tag key={index} className="animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+              {tech}
+            </Tag>
           ))}
         </div>
       </div>

@@ -1,9 +1,31 @@
 import React from "react";
 
-export default function Tag({ children }: { children: React.ReactNode }) {
+export default function Tag({ 
+  children, 
+  className = "",  
+  style = {} 
+}: { 
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
-    <p className="uppercase whitespace-nowrap bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] px-2 py-[6px] md:py-[6px] md:px-3 rounded-[4px] font-medium md:font-bold text-base lg:text-lg">
+    <span 
+      className={`
+        uppercase whitespace-nowrap text-sm md:text-base
+        px-3 py-1 md:py-2 md:px-4
+        rounded-md font-medium md:font-semibold
+        bg-gradient-to-r from-[rgba(var(--background-surface),0.7)] to-[rgba(var(--background-surface),0.4)]
+        border border-[rgba(var(--border-color),0.3)]
+        text-[rgb(var(--accent-primary))]
+        flex items-center justify-center
+        transition-all duration-300
+        hover:scale-105 hover:shadow-sm hover:shadow-[rgba(var(--accent-primary),0.2)]
+        ${className}
+      `}
+      style={style}
+    >
       {children}
-    </p>
+    </span>
   );
 }
