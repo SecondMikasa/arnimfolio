@@ -34,6 +34,15 @@ export default function Works() {
             img: "/devdraws.png",
         },
         {
+            title: "Secret Scribbles",
+            gitLink: "https://github.com/SecondMikasa/SecretScribbles",
+            liveLink: "",
+            about:
+                "Designed and developed VideoShrinkPro , a web-based video conversion and compression tool that utilizes FFmpeg WebAssembly (Wasm) to process videos offline, ensuring user privacy and eliminating the need for server-side processing.   ",
+            stack: ["next", "mongodb", "typescript", "resend"],
+            img: "/secretscribbles.png",
+        },
+        {
             title: "VideoShrinkPro",
             gitLink: "https://github.com/SecondMikasa/VideoShrinkPro",
             liveLink: "",
@@ -45,7 +54,7 @@ export default function Works() {
         {
             title: "ReadMePro",
             gitLink: "https://github.com/SecondMikasa/ReadMePro",
-            liveLink: "",
+            liveLink: "https://readmepro.vercel.app/",
             about:
                 "Developed a dynamic README editor that simplifies designing, managing, and maintaining README files on the go, boosting productivity for developers.Engineered an intuitive interface streamlining documentation workflows.",
             stack: ["next", "localstorage", "typescript", "tailwindcss"],

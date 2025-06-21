@@ -95,8 +95,12 @@ export default function FolioCard({
         </p>
         
         <div className="flex gap-3 md:gap-4 flex-wrap mt-auto">
-          {stack.map((tech, index) => (
-            <Tag key={index} className="animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+          {
+            stack.map((tech, index) => (
+              <Tag
+                key={index}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}>
               {tech}
             </Tag>
           ))}
