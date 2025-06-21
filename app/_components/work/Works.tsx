@@ -5,11 +5,16 @@ import { useInView } from "react-intersection-observer"
 
 import { useView } from "@/contexts/viewContext"
 
-import { Title } from "../ui/Title"
+import { Syne } from "next/font/google";
 
 import FolioCard from "./FolioCard"
 import Timeline from "./Timeline"
+import AnimatedTitle from "../ui/AnimatedTitle"
 
+const syne = Syne({
+    subsets: ["latin"],
+    display: 'swap', // Improved font loading performance
+});
 
 export default function Works() {
     const { setSectionInView } = useView();
@@ -38,7 +43,7 @@ export default function Works() {
             gitLink: "https://github.com/SecondMikasa/SecretScribbles",
             liveLink: "",
             about:
-               "Secret Scribbles is an anonymous social platform where users can collect feedback, comments, and advice without revealing the identity of contributors. The platform provides a safe space for authentic expression without the fear of judgment or exposure.",
+                "Secret Scribbles is an anonymous social platform where users can collect feedback, comments, and advice without revealing the identity of contributors. The platform provides a safe space for authentic expression without the fear of judgment or exposure.",
             stack: ["next.js", "mongodb", "typescript", "resend"],
             img: "/secretscribbles.png",
         },
@@ -60,7 +65,7 @@ export default function Works() {
             stack: ["next.js", "localstorage", "typescript", "tailwindcss"],
             img: "/readmepro.png",
         },
-        
+
     ];
 
     const { ref, inView } = useInView({
@@ -78,18 +83,29 @@ export default function Works() {
             ref={ref}
             id="work"
         >
-            <Title>Projects</Title>
-            {works.map((work, index) => (
-                <FolioCard
-                    key={index}
-                    img={work.img}
-                    title={work.title}
-                    gitLink={work.gitLink}
-                    liveLink={work.liveLink}
-                    about={work.about}
-                    stack={work.stack}
-                />
-            ))}
+            <div className="text-center mb-16 sm:mb-20 lg:mb-24">
+                <AnimatedTitle
+                    wordSpace="mr-2 sm:mr-3 lg:mr-4"
+                    charSpace="mr-[0.001em]"
+                    className={`uppercase ${syne.className} antialiased text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent leading-tight`}
+                    id="about-title"
+                >
+                    Projects
+                </AnimatedTitle>
+                <div className="mt-4 sm:mt-6 lg:mt-8 w-24 sm:w-32 lg:w-40 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full" />
+            </div>
+            {
+                works.map((work, index) => (
+                    <FolioCard
+                        key={index}
+                        img={work.img}
+                        title={work.title}
+                        gitLink={work.gitLink}
+                        liveLink={work.liveLink}
+                        about={work.about}
+                        stack={work.stack}
+                    />
+                ))}
             <Timeline />
         </section>
     );

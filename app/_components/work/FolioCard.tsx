@@ -25,7 +25,7 @@ export default function FolioCard({
     rootMargin: "-100px 0px",
     triggerOnce: true,
   });
-
+  
   return (
     <div
       ref={ref}
@@ -43,16 +43,16 @@ export default function FolioCard({
         />
         <div className="absolute inset-0 bg-gradient-radial opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
-      
+     
       <div className="flex flex-col gap-5 lg:col-span-7">
-        <div className="flex items-center justify-between">
-          <div className="max-w-[calc(100%-100px)]">
-            <h2 className="text-gradient-blue text-2xl sm:text-3xl xl:text-4xl font-bold">
+        <div className="flex flex-col gap-3 items-center sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+          <div className="w-full sm:max-w-[calc(100%-100px)] text-center sm:text-left">
+            <h2 className="text-gradient-blue text-2xl sm:text-3xl xl:text-4xl font-bold break-words">
               {title}
             </h2>
           </div>
-          
-          <div className="flex gap-3 md:gap-4">
+         
+          <div className="flex gap-3 md:gap-4 sm:flex-shrink-0 justify-center sm:justify-start">
             <Link
               href={liveLink}
               className="rounded-full bg-gradient-to-br from-blue-600/20 to-blue-500/10 p-3 transition-all duration-300 hover:scale-110 hover:shadow-md hover:shadow-blue-500/25"
@@ -61,12 +61,12 @@ export default function FolioCard({
               data-blobity-radius="34"
               data-blobity-magnetic="true"
             >
-              <Icon 
-                icon="line-md:external-link-rounded" 
+              <Icon
+                icon="line-md:external-link-rounded"
                 className="text-2xl sm:text-3xl text-blue-400 hover:text-blue-300 transition-colors"
               />
             </Link>
-            
+           
             <Link
               href={`${gitLink ? gitLink : "#"}`}
               className={`rounded-full bg-gradient-to-br from-purple-600/20 to-purple-500/10 p-3 transition-all duration-300 ${gitLink ? "hover:scale-110 hover:shadow-md hover:shadow-purple-500/25" : "cursor-not-allowed opacity-60"}`}
@@ -85,18 +85,18 @@ export default function FolioCard({
             </Link>
           </div>
         </div>
-        
+       
         <p className="text-base text-[rgb(var(--foreground-secondary))] leading-relaxed">
           {about}
         </p>
-        
+       
         <div className="flex gap-3 md:gap-4 flex-wrap mt-auto">
-          {
-            stack.map((tech, index) => (
-              <Tag
-                key={index}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}>
+          {stack.map((tech, index) => (
+            <Tag
+              key={index}
+              className="animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               {tech}
             </Tag>
           ))}
