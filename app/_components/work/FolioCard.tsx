@@ -26,16 +26,12 @@ export default function FolioCard({
     triggerOnce: true,
   });
 
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <div
       ref={ref}
       className={`glass-card w-full rounded-2xl grid grid-cols-1 items-start lg:grid-cols-12 xl:flex gap-5 xl:gap-10 p-6 transition-all duration-700 transform hover:shadow-lg hover:shadow-blue-500/10 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative overflow-hidden rounded-xl lg:col-span-5 group w-full">
         <Image
