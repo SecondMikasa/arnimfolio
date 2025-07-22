@@ -157,7 +157,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1.2 }}
-        className="relative w-full sm:w-auto flex justify-center sm:justify-end"
+        className="relative w-full sm:w-auto flex justify-center sm:justify-end pb-24 xs:pb-28"
       >
         <motion.div
           ref={imgRef}
@@ -191,6 +191,31 @@ export const Hero = () => {
               <div className="w-12 h-12 xs:w-16 xs:h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-400/20 backdrop-blur-sm"></div>
             </div>
           </motion.div>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-4 xs:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10 mt-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+      >
+        <motion.p
+          className="text-white/50 text-sm mb-2 font-medium"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Scroll to explore
+        </motion.p>
+        <motion.div
+          className="w-6 h-10 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm"
+          initial={{ y: 0 }}
+        >
+          <motion.div
+            className="w-1.5 h-1.5 bg-white/70 rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
       </motion.div>
     </section>
