@@ -45,7 +45,7 @@ export default function About() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // Extract just the file ID from your Google Drive URL
-  const resumeFileId = "15ztZtCQ_2gUUSFw_yd4D4eVOFZA3A35Y";
+  const resumeFileId = "1vKtYe75k3p8KppRknHMzAY_-ZE_ZVyAe";
 
   const { ref, inView } = useInView({
     threshold: 0.2,
